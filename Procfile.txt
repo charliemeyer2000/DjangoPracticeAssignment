@@ -1,1 +1,2 @@
-web: bundle exec rails server -p $PORT
+release: python manage.py migrate
+web: gunicorn mysite.wsgi
