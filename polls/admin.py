@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Choice, Question
+from .models import Choice, Question, DeepThought
 # Register your models here.
 
 
@@ -19,3 +19,4 @@ class QuestionAdmin(admin.ModelAdmin):
     list_display = ('question_text', 'pub_date', 'was_published_recently')
 
 admin.site.register(Question, QuestionAdmin)
+admin.site.register(DeepThought)

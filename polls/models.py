@@ -2,7 +2,9 @@ from django.db import models
 import datetime
 from django.utils import timezone
 from django.contrib import admin
+from django import forms
 # Create your models here.
+
 class Question(models.Model):
 	question_text = models.CharField(max_length=200)
 	pub_date = models.DateTimeField('date published')
@@ -22,3 +24,10 @@ class Choice(models.Model):
 	votes = models.IntegerField(default = 0)
 	def __str__(self):
 		return self.choice_text
+
+class DeepThought(models.Model):
+	title = models.CharField(max_length = 200)
+	thought = models.TextField()
+	def __str__(self):
+		return "Title: "+ self.title+ ". DeepThought: "+ self.thought 
+
