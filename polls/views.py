@@ -9,19 +9,19 @@ from django.urls import reverse
 from django.views import generic
 
 from .models import Choice, Question, DeepThought
+# is this necessary?
 
-from . import urls
+
 from django.utils import timezone
 
-# incredibly basic view saying thatnk you for submitting a deep thought
+# home view for when you open the page. Should have some buttons on there to lead you places around the site.
+def homeView(request):
+    return render(request, "polls/homeview.html")
 
 #super basic view to show each deepthought polls/deepthought/<id:pk>
 def viewDeepThought(request, DeepThought_id):
         d = DeepThought.objects.filter(id=DeepThought_id)
         print(d)
-        
-        
-        
         
         # Check if you get the value
         return HttpResponse(d)
@@ -31,7 +31,18 @@ def viewDeepThought(request, DeepThought_id):
 def detail(request):
 
     deep_thought_list = DeepThought.objects.all()
-    output = ', '.join(d.thought for d in deep_thought_list)
+    output = HttpResponse()
+    output.write("Here is a list of DeepThoughts submitted!")
+    output.write("<br>")
+    for d in deep_thought_list:
+        myTitle = d.title
+        myThought = d.thought
+        output.write("Title: ")
+        output.write(myTitle)
+        output.write(" Thought: ")
+        output.write(myThought)
+        output.write("<br>")
+        
     return HttpResponse(output)
 
 # some view for the user to input a new deepthought at /polls/deepthoughts

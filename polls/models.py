@@ -29,5 +29,5 @@ class DeepThought(models.Model):
 	title = models.CharField(max_length = 200)
 	thought = models.TextField()
 	def __str__(self):
-		return "Title: "+ self.title+ ". DeepThought: "+ self.thought 
+		return "Title: "+ self.title+ ". DeepThought: "+ self.thought
 
